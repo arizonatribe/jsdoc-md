@@ -1,6 +1,6 @@
-# jsdoc-md
+# jsdoc-md-standard
 
-[![npm version](https://badgen.net/npm/v/jsdoc-md)](https://npm.im/jsdoc-md) [![Build status](https://travis-ci.org/jaydenseric/jsdoc-md.svg?branch=master)](https://travis-ci.org/jaydenseric/jsdoc-md)
+[![npm version](https://badgen.net/npm/v/jsdoc-md-standard)](https://www.npmjs.com/package/jsdoc-md-standard) [![Build status](https://travis-ci.org/arizonatribe/jsdoc-md-standard.svg?branch=master)](https://travis-ci.org/arizonatribe/jsdoc-md-standard)
 
 A Node.js CLI to analyze source JSDoc and generate documentation under a given heading in a markdown file (such as `readme.md`).
 
@@ -9,13 +9,13 @@ A Node.js CLI to analyze source JSDoc and generate documentation under a given h
 To try it out with [npx](https://npm.im/npx) run:
 
 ```sh
-npx jsdoc-md --help
+npx jsdoc-md-standard --help
 ```
 
-To install [`jsdoc-md`](https://npm.im/jsdoc-md) from [npm](https://npmjs.com) as a dev dependency run:
+To install [`jsdoc-md-standard`](https://www.npmjs.com/package/jsdoc-md-standard) from [npm](https://npmjs.com) as a dev dependency run:
 
 ```sh
-npm install jsdoc-md --save-dev
+npm install jsdoc-md-standard --save-dev
 ```
 
 Add a script to your `package.json`:
@@ -23,7 +23,7 @@ Add a script to your `package.json`:
 ```json
 {
   "scripts": {
-    "jsdoc": "jsdoc-md"
+    "build:docs": "jsdoc-md-standard"
   }
 }
 ```
@@ -31,12 +31,12 @@ Add a script to your `package.json`:
 Then run the script to update docs:
 
 ```sh
-npm run jsdoc
+npm run build:docs
 ```
 
 ## CLI
 
-For detailed CLI usage instructions, run `npx jsdoc-md --help`.
+For detailed CLI usage instructions, run `npx jsdoc-md-standard --help`.
 
 | Option             | Alias | Default         | Description                                   |
 | :----------------- | :---- | :-------------- | :-------------------------------------------- |
@@ -66,15 +66,15 @@ Scrapes JSDoc from files to populate a markdown file documentation section.
 
 _Customizing all options._
 
-> ```js
-> const { jsdocMd } = require('jsdoc-md')
->
-> jsdocMd({
->   sourceGlob: 'index.mjs',
->   markdownPath: 'README.md',
->   targetHeading: 'Docs'
-> })
-> ```
+```js
+const { jsdocMd } = require('jsdoc-md')
+
+jsdocMd({
+  sourceGlob: 'index.mjs',
+  markdownPath: 'README.md',
+  targetHeading: 'Docs'
+})
+```
 
 ## Caveats
 
@@ -159,24 +159,10 @@ Other inline tags such as [`{@tutorial}`](http://usejsdoc.org/tags-inline-tutori
 
 ### Example content
 
-[`@example`](http://usejsdoc.org/tags-example) content outside `<caption />` (which may also contain markdown) is treated as markdown. This allows multiple code blocks with syntax highlighting and explanatory content such as paragraphs and images. For example:
+This is where `jsdoc-md-standard` deviates from the upstream `jsdoc-md` package. That package went in a non-standard direction in how `@example` tags are treated, which you no doubt found out if you tried to generate documentation via JSDoc via [its default template](http://usejsdoc.org/about-configuring-default-template.html) or [one of the 100+ community templates](https://www.npmjs.com/search?q=jsdoc+template).
 
-````js
-/**
- * Displays a message in a native popup window.
- * @kind function
- * @name popup
- * @param {string} message Message text.
- * @example <caption>Say `Hello!` to the user.</caption>
- * This usage:
- *
- * ```js
- * popup('Hello!')
- * ```
- *
- * Displays like this on macOS:
- *
- * ![Screenshot](path/to/screenshot.jpg)
- */
-const popup = message => alert(message)
-````
+If you need to generate multiple examples, you add multiple `@example` tags, plain and simple. That's how we've been writing JSDoc annotations for years and it doesn't make sense to force you to refactor your code comments to turn `@example` tags into mini blog posts.
+
+Stuffing markdown or paragraphs of text into an `@example` block sounds like a nice enough idea but breaks every template's attempt to syntax highlight your example code. It also prevents you from using some of the JSDoc plugins that are meant to run doctests off of the raw JavaScript it parses from your examples.
+
+As is standard with JSDoc you can still set captions, wrapped inside of a `<caption />` tag \[[1](http://usejsdoc.org/tags-example)].

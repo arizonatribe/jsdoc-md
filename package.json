@@ -1,19 +1,16 @@
 {
-  "name": "jsdoc-md",
-  "version": "2.1.0",
-  "description": "A CLI to analyze source JSDoc and generate documentation under a given heading in a markdown file (such as readme.md).",
+  "name": "jsdoc-md-standard",
+  "version": "1.0.0",
+  "description": "A CLI to analyze source JSDoc and generate documentation under a given heading in a markdown file (such as readme.md). Will even work in projects that are also using JSDoc HTML templates",
   "license": "MIT",
-  "author": {
-    "name": "Jayden Seric",
-    "email": "me@jaydenseric.com",
-    "url": "https://jaydenseric.com"
-  },
-  "contributors": [
+  "authors": [
+    "Jayden Seric <me@jaydenseric.com>",
+    "pur3miish <pur3miish@me.com>",
     "David Nunez <arizonatribe@gmail.com>"
   ],
-  "repository": "github:jaydenseric/jsdoc-md",
-  "homepage": "https://github.com/jaydenseric/jsdoc-md#readme",
-  "bugs": "https://github.com/jaydenseric/jsdoc-md/issues",
+  "repository": "github:arizonatribe/jsdoc-md",
+  "homepage": "https://github.com/arizonatribe/jsdoc-md#readme",
+  "bugs": "https://github.com/arizonatribe/jsdoc-md/issues",
   "keywords": [
     "jsdoc",
     "md",
