@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-md-standard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI to analyze source JSDoc and generate documentation under a given heading in a markdown file (such as readme.md). Will even work in projects that are also using JSDoc HTML templates",
   "license": "MIT",
   "authors": [
@@ -8,9 +8,9 @@
     "pur3miish <pur3miish@me.com>",
     "David Nunez <arizonatribe@gmail.com>"
   ],
-  "repository": "github:arizonatribe/jsdoc-md",
-  "homepage": "https://github.com/arizonatribe/jsdoc-md#readme",
-  "bugs": "https://github.com/arizonatribe/jsdoc-md/issues",
+  "repository": "github:arizonatribe/jsdoc-md-standard",
+  "homepage": "https://github.com/arizonatribe/jsdoc-md-standard#readme",
+  "bugs": "https://github.com/arizonatribe/jsdoc-md-standard/issues",
   "keywords": [
     "jsdoc",
     "md",
