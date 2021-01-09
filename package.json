@@ -46,23 +46,18 @@
     "circular-json": "^0.5.9",
     "eslint": "^5.13.0",
     "eslint-config-env": "^3.0.0",
-    "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-import-order-alphabetical": "0.0.1",
     "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.3",
-    "prettier": "^1.16.4",
     "tap": "^12.5.2"
   },
   "scripts": {
-    "prepare": "npm run prepare:jsdoc && npm run prepare:prettier",
+    "prepare": "npm run prepare:jsdoc",
     "prepare:jsdoc": "node cli",
-    "prepare:prettier": "prettier readme.md --write",
-    "test": "npm run test:eslint && npm run test:prettier && npm run test:js",
+    "test": "npm run test:eslint && npm run test:js",
     "test:eslint": "eslint .",
-    "test:prettier": "prettier '**/*.{json,yml,md}' -l",
     "test:js": "tap lib/*.test.js",
     "prepublishOnly": "npm run prepare && npm test"
   },
@@ -72,8 +67,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint",
-    "*.{json,yml,md}": "prettier -l"
+    "*.js": "eslint"
   },
   "eslintIgnore": [
     "tap-snapshots"
@@ -82,10 +76,5 @@
     "extends": [
       "env"
     ]
-  },
-  "prettier": {
-    "proseWrap": "never",
-    "singleQuote": true,
-    "semi": false
   }
 }
